@@ -234,7 +234,7 @@ public:
 	/**
 	* 返回HTTP请求头部
 	*/
-    virtual vector<string> getHeader() {}
+    virtual vector<string> getHeader() {return m_header;}
   
     /**
     * 

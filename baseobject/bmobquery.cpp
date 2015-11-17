@@ -282,7 +282,7 @@ void BmobQuery::setCachePolicy(){
 }
 
 bool BmobQuery::hasCachedResult(){
-
+    return false;
 }
 
 void BmobQuery::clearCachedResult(){
