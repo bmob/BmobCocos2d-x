@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['batchallocator',['BatchAllocator',['../classJson_1_1BatchAllocator.html',1,'Json']]],
+  ['bmobcloud',['BmobCloud',['../classBmobCloud.html',1,'']]],
+  ['bmobclouddelegate',['BmobCloudDelegate',['../classBmobCloudDelegate.html',1,'']]],
   ['bmobcountdelegate',['BmobCountDelegate',['../classBmobCountDelegate.html',1,'']]],
   ['bmobdeletedelegate',['BmobDeleteDelegate',['../classBmobDeleteDelegate.html',1,'']]],
   ['bmobemailverifydelegate',['BmobEmailVerifyDelegate',['../classBmobEmailVerifyDelegate.html',1,'']]],
@@ -18,5 +21,6 @@ var searchData=
   ['bmobstaticsdelegate',['BmobStaticsDelegate',['../classBmobStaticsDelegate.html',1,'']]],
   ['bmobstrutil',['BmobStrUtil',['../classBmobStrUtil.html',1,'']]],
   ['bmobupdatedelegate',['BmobUpdateDelegate',['../classBmobUpdateDelegate.html',1,'']]],
-  ['bmobuser',['BmobUser',['../classBmobUser.html',1,'']]]
+  ['bmobuser',['BmobUser',['../classBmobUser.html',1,'']]],
+  ['booleanvalue',['booleanValue',['../namespaceJson.html#a7d654b75c16a57007925868e38212b4ea36cbd8ff0078df0156c8efc0b2aee919',1,'Json']]]
 ];

@@ -11,6 +11,7 @@ string BmobSDKInit::REQUEST_SMS_CODE_URL = BmobSDKInit::BASE_URL + "/1/requestSm
 string BmobSDKInit::RESET_BY_CODE_URL = BmobSDKInit::BASE_URL + "/1/resetPasswordBySmsCode";
 string BmobSDKInit::UPDATE_PWD_URL = BmobSDKInit::BASE_URL + "/1/updateUserPassword";
 string BmobSDKInit::EMAIL_VERIFY_URL = BmobSDKInit::BASE_URL + "/1/requestEmailVerify";
+string BmobSDKInit::CLOUD_CODE_URL = BmobSDKInit::BASE_URL + "/1/functions/";
 
 
 string BmobSDKInit::USER_TABLE = "_User";

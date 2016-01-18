@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7ebmobobject',['~BmobObject',['../classBmobObject.html#ae3ee0162c8ab06925d2b8e3c966dedde',1,'BmobObject']]]
+  ['todo_20list',['Todo List',['../todo.html',1,'']]],
+  ['type',['Type',['../classBmobQueryInterafce.html#accb8b844384ec886db8b9bb8a356e9e6',1,'BmobQueryInterafce']]]
 ];

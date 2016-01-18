@@ -1,24 +1,7 @@
 var searchData=
 [
-  ['object2json',['object2Json',['../classBmobJsonUtil.html#a307abcaec6cbc8a51723f5c29bcf5043',1,'BmobJsonUtil']]],
-  ['oncounterror',['onCountError',['../classBmobCountDelegate.html#a37dace6cd3ac81eed4156d2f63cb6a76',1,'BmobCountDelegate']]],
-  ['oncountsucess',['onCountSucess',['../classBmobCountDelegate.html#a6b8f60e4382ee0ef0db9d9977bebf481',1,'BmobCountDelegate']]],
-  ['ondeleteerror',['onDeleteError',['../classBmobDeleteDelegate.html#a01be6e25f78c24779fd7e994d22bedd5',1,'BmobDeleteDelegate']]],
-  ['ondeletesucess',['onDeleteSucess',['../classBmobDeleteDelegate.html#a15fa560da31d1a1820382f89de7f9f5a',1,'BmobDeleteDelegate']]],
-  ['onemailverifyerror',['onEmailVerifyError',['../classBmobEmailVerifyDelegate.html#a3b5d401a683dcd77af683278190d7c96',1,'BmobEmailVerifyDelegate']]],
-  ['onemailverifysucess',['onEmailVerifySucess',['../classBmobEmailVerifyDelegate.html#a80bbb7530f50760decc5a40918126434',1,'BmobEmailVerifyDelegate']]],
-  ['onfinderror',['onFindError',['../classBmobFindDelegate.html#a9bd7e4945460f90fd5390f80bc5d99b5',1,'BmobFindDelegate']]],
-  ['onfindsucess',['onFindSucess',['../classBmobFindDelegate.html#a2a5f716925c8942310013e7762978651',1,'BmobFindDelegate']]],
-  ['ongeterror',['onGetError',['../classBmobGetDelegate.html#a61a972e1933b8f41b80de89cdfb9353c',1,'BmobGetDelegate']]],
-  ['ongetsucess',['onGetSucess',['../classBmobGetDelegate.html#a85b4c4fda9acc978a4b38645f306fad1',1,'BmobGetDelegate']]],
-  ['onhttprequestcompleted',['onHttpRequestCompleted',['../classBmobObject.html#a23d78145d0ebadbe0e4489c2645e6f72',1,'BmobObject::onHttpRequestCompleted()'],['../classBmobQuery.html#a2f34c9e34467478a6650acacb5d7deae',1,'BmobQuery::onHttpRequestCompleted()'],['../classBmobQueryInterafce.html#a432c9ae67723f3f98697900def397a0a',1,'BmobQueryInterafce::onHttpRequestCompleted()']]],
-  ['onreseterror',['onResetError',['../classBmobResetPasswordDelegate.html#aa667123d2af2a3dc557e2207f5a3919e',1,'BmobResetPasswordDelegate']]],
-  ['onresetsucess',['onResetSucess',['../classBmobResetPasswordDelegate.html#ad2a18188d85b07899170a24ce575dabe',1,'BmobResetPasswordDelegate']]],
-  ['onsaveerror',['onSaveError',['../classBmobSaveDelegate.html#ade1b44a81fbad3565f467e33cc77c99b',1,'BmobSaveDelegate']]],
-  ['onsavesucess',['onSaveSucess',['../classBmobSaveDelegate.html#aea3dedfdeb95994c56111523d84b85b0',1,'BmobSaveDelegate']]],
-  ['onstaticserror',['onStaticsError',['../classBmobStaticsDelegate.html#a41242d1c486bac0df68a0b33c3cbf49f',1,'BmobStaticsDelegate']]],
-  ['onstaticssucess',['onStaticsSucess',['../classBmobStaticsDelegate.html#a017825bc0683c867e63c8b144fd5daf8',1,'BmobStaticsDelegate']]],
-  ['onupdateerror',['onUpdateError',['../classBmobUpdateDelegate.html#acccdb3a677a61c9df3ee71243854e481',1,'BmobUpdateDelegate']]],
-  ['onupdatesucess',['onUpdateSucess',['../classBmobUpdateDelegate.html#a803923ae431e072c729aeb9150590be2',1,'BmobUpdateDelegate']]],
-  ['order',['order',['../classBmobQuery.html#a03590f6a490295762b27da9a1c95360b',1,'BmobQuery::order()'],['../classBmobQueryInterafce.html#a04f1da9c0b0f6e1f45e0b3cdb135610f',1,'BmobQueryInterafce::order()']]]
+  ['make',['make',['../classJson_1_1Path.html#a5289901fc58ad1fdca1de7fb5a0b620c',1,'Json::Path::make(Value &amp;root) const '],['../classJson_1_1Path.html#afa04fe0c53033fdc044bc7e3c782c4af',1,'Json::Path::make(Value &amp;root) const ']]],
+  ['max',['max',['../classBmobQuery.html#ae5b3f1ac17864bb3c92e876d6c73af10',1,'BmobQuery::max()'],['../classBmobQueryInterafce.html#a1a4f670f57f0c1fb4ccfd0971f446540',1,'BmobQueryInterafce::max()'],['../classBmobQuery.html#a354ebb9384bf9c4a08488d99aefa5050',1,'BmobQuery::max()']]],
+  ['membername',['memberName',['../classJson_1_1ValueIteratorBase.html#a83768d87c608c8d1133de8721eefc31b',1,'Json::ValueIteratorBase::memberName() const '],['../classJson_1_1ValueIteratorBase.html#ac05e6bda279201f09803b7f347ddf057',1,'Json::ValueIteratorBase::memberName() const ']]],
+  ['min',['min',['../classBmobQuery.html#a7ade1972d3de0d6068eebdb520ef69f9',1,'BmobQuery::min()'],['../classBmobQueryInterafce.html#ab6f4e6d4a0501bc5506def85c534b4c3',1,'BmobQueryInterafce::min()'],['../classBmobQuery.html#a0e9d9db9e82c3689e42b56fb503426eb',1,'BmobQuery::min()']]]
 ];

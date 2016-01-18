@@ -1,0 +1,14 @@
+<map id="BmobObject::send" name="BmobObject::send">
+<area shape="rect" id="node2" href="$classBmobUser.html#aec80ddc1e330c5bad75ed89838a6609f" title="BmobUser::login" alt="" coords="226,5,345,32"/>
+<area shape="rect" id="node3" href="$classBmobUser.html#a0d062745a7ce4a5e14d8ada455a0431a" title="BmobUser::loginByAccount" alt="" coords="194,56,377,83"/>
+<area shape="rect" id="node4" href="$classBmobUser.html#a002857d3bd71ed44ba6184f1d9a82595" title="BmobUser::loginBySMSCode" alt="" coords="188,107,383,133"/>
+<area shape="rect" id="node6" href="$classBmobUser.html#a5a9aa4f61069983243fa6eb145b7f60c" title="BmobUser::requestEmailVerify" alt="" coords="184,157,387,184"/>
+<area shape="rect" id="node7" href="$classBmobUser.html#a46dead1f03e2c310f44fb373fbb20c91" title="BmobUser::requestSMSCode" alt="" coords="188,208,383,235"/>
+<area shape="rect" id="node8" href="$classBmobUser.html#a4c3993bbd5029b75f56023aafc32ad2d" title="BmobUser::resetPasswordBy\lEmail" alt="" coords="188,259,383,301"/>
+<area shape="rect" id="node9" href="$classBmobUser.html#a0abf8dbfe9dfd66d7ce56e4fbd53fb21" title="BmobUser::resetPasswordBy\lSMSCode" alt="" coords="188,325,383,366"/>
+<area shape="rect" id="node10" href="$classBmobUser.html#a86cf8c7460b120e4508fdc91d724314f" title="BmobUser::signUp" alt="" coords="219,391,352,417"/>
+<area shape="rect" id="node11" href="$classBmobUser.html#ad759c0beb78c2b5afbf7672036def25d" title="BmobUser::update" alt="" coords="220,441,351,468"/>
+<area shape="rect" id="node13" href="$classBmobUser.html#a25040e8ee09b8bf4cd09a09322c38ddf" title="BmobUser::updateCurrentUser\lPassword" alt="" coords="184,493,387,534"/>
+<area shape="rect" id="node5" href="$classBmobUser.html#a66d86729dabbc93ef7aa5e272d995f85" title="BmobUser::signOrLoginByMobile\lPhone" alt="" coords="435,99,650,141"/>
+<area shape="rect" id="node12" href="$classBmobUser.html#a7f3a44c1e0b85c1fb733b33b6ada32db" title="BmobUser::update" alt="" coords="477,441,608,468"/>
+</map>

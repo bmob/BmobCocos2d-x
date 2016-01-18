@@ -24,7 +24,7 @@ public:
 
 	static string APP_ID;			//SDK APP_ID//
 	static string APP_KEY;			//SDK APP_KEY //
-	static string URL;				
+	static string URL;
 	static string BASE_URL;
 	static string USER_URL;
 	static string LOGIN_URL;
@@ -34,6 +34,7 @@ public:
 	static string RESET_BY_CODE_URL;
 	static string UPDATE_PWD_URL;
 	static string EMAIL_VERIFY_URL;
+	static string CLOUD_CODE_URL;
 
 };
 #endif

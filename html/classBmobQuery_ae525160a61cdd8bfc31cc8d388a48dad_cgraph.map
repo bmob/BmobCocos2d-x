@@ -1,0 +1,7 @@
+<map id="BmobQuery::findStatistics" name="BmobQuery::findStatistics">
+<area shape="rect" id="node2" href="$classBmobSDKInit.html#a7f082849c54d8ae48e32eea74562f623" title="BmobSDKInit::isInitialize" alt="" coords="229,5,397,32"/>
+<area shape="rect" id="node3" href="$classBmobQuery.html#a742d5001177ed8ee3fc31b21a9a9a422" title="BmobQuery::query" alt="" coords="248,56,379,83"/>
+<area shape="rect" id="node4" href="$classBmobQuery.html#a38ffb64f9f17fe3d3426e09ff6646ea8" title="BmobQuery::onHttpRequest\lCompleted" alt="" coords="445,19,632,61"/>
+<area shape="rect" id="node6" href="$classBmobQuery.html#aae1feda71fd2b14a2c446e68b7b448f7" title="BmobQuery::getHeader" alt="" coords="459,85,618,112"/>
+<area shape="rect" id="node5" href="$classJson_1_1Reader.html#af1da6c976ad1e96c742804c3853eef94" title="Read a Value from a JSON document. " alt="" coords="681,27,821,53"/>
+</map>

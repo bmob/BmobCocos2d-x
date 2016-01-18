@@ -1,0 +1,8 @@
+<map id="BmobSDKInit::isInitialize" name="BmobSDKInit::isInitialize">
+<area shape="rect" id="node2" href="$classBmobQuery.html#ac5ee0ac87aa4b4abd5dd467689c65ea9" title="BmobQuery::count" alt="" coords="252,5,383,32"/>
+<area shape="rect" id="node3" href="$classBmobCloud.html#aee7de38387c8dc6a2d5d1bf7036e6d2a" title="BmobCloud::execCloudCode" alt="" coords="222,56,413,83"/>
+<area shape="rect" id="node4" href="$classBmobQuery.html#ab0fdf6d343ed5a90f64d8264f3b58786" title="BmobQuery::findObjects" alt="" coords="235,107,400,133"/>
+<area shape="rect" id="node5" href="$classBmobQuery.html#ae525160a61cdd8bfc31cc8d388a48dad" title="BmobQuery::findStatistics" alt="" coords="230,157,405,184"/>
+<area shape="rect" id="node6" href="$classBmobQuery.html#a69fbf5896ad7f8a208a45a08c5600444" title="BmobQuery::getObject" alt="" coords="240,208,395,235"/>
+<area shape="rect" id="node7" href="$classBmobObject.html#a024afe41dce44a84f07ee4c82ac69ec4" title="BmobObject::save" alt="" coords="252,259,383,285"/>
+</map>

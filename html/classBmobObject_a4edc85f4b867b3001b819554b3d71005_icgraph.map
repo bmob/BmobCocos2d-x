@@ -1,0 +1,7 @@
+<map id="BmobObject::enParamsToHttp" name="BmobObject::enParamsToHttp">
+<area shape="rect" id="node2" href="$classBmobUser.html#a5a9aa4f61069983243fa6eb145b7f60c" title="BmobUser::requestEmailVerify" alt="" coords="256,5,459,32"/>
+<area shape="rect" id="node3" href="$classBmobUser.html#a46dead1f03e2c310f44fb373fbb20c91" title="BmobUser::requestSMSCode" alt="" coords="260,56,455,83"/>
+<area shape="rect" id="node4" href="$classBmobUser.html#a4c3993bbd5029b75f56023aafc32ad2d" title="BmobUser::resetPasswordBy\lEmail" alt="" coords="260,107,455,149"/>
+<area shape="rect" id="node5" href="$classBmobUser.html#a0abf8dbfe9dfd66d7ce56e4fbd53fb21" title="BmobUser::resetPasswordBy\lSMSCode" alt="" coords="260,173,455,214"/>
+<area shape="rect" id="node6" href="$classBmobUser.html#a25040e8ee09b8bf4cd09a09322c38ddf" title="BmobUser::updateCurrentUser\lPassword" alt="" coords="256,238,459,279"/>
+</map>

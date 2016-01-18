@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type',['Type',['../classBmobQueryInterafce.html#accb8b844384ec886db8b9bb8a356e9e6',1,'BmobQueryInterafce']]]
+  ['exec_5ftype',['EXEC_Type',['../classBmobCloud.html#a61671203ed4cfaebef63b2d47fb6880d',1,'BmobCloud']]]
 ];

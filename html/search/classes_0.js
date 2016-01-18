@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['batchallocator',['BatchAllocator',['../classJson_1_1BatchAllocator.html',1,'Json']]],
+  ['bmobcloud',['BmobCloud',['../classBmobCloud.html',1,'']]],
+  ['bmobclouddelegate',['BmobCloudDelegate',['../classBmobCloudDelegate.html',1,'']]],
   ['bmobcountdelegate',['BmobCountDelegate',['../classBmobCountDelegate.html',1,'']]],
   ['bmobdeletedelegate',['BmobDeleteDelegate',['../classBmobDeleteDelegate.html',1,'']]],
   ['bmobemailverifydelegate',['BmobEmailVerifyDelegate',['../classBmobEmailVerifyDelegate.html',1,'']]],
