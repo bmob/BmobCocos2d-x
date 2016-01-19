@@ -16,6 +16,6 @@
 #include "bmobresetpasswordbycodedelegate.h"
 #include "bmobemailverifydelegate.h"
 #include "bmoblogindelegate.h"
-#include "bmobclouddelegate"
+#include "bmobclouddelegate.h"
 
 #endif
