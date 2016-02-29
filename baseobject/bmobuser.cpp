@@ -19,7 +19,7 @@ BmobUser* BmobUser::getCurrentUser(){
 	string pwd = CCUserDefault::sharedUserDefault()->getStringForKey("user_pwd");
 	string name = CCUserDefault::sharedUserDefault()->getStringForKey("user_name");
 	string session = CCUserDefault::sharedUserDefault()->getStringForKey("user_session");
-	
+
 	if (id.empty() || name.empty() || session.empty())
 	{
 		/* code */
@@ -75,13 +75,13 @@ void BmobUser::signUp(BmobSaveDelegate* delegate){
 		/* code */
 		return ;
 	}
-	
+
 	this->m_url =  BmobSDKInit::USER_URL;
 
 	_opType = HTTP_OP_Type::_bHTTP_SAVE;
 
 	this->m_pSaveDelegate = delegate;
-   
+
    /**
 	* save user
 	*/
@@ -111,7 +111,7 @@ void BmobUser::login(BmobSaveDelegate* delegate){
 	_opType = HTTP_OP_Type::_bHTTP_SAVE;
 
 	this->m_pSaveDelegate = delegate;
-   
+
 
 	this->send(network::HttpRequest::Type::GET);
 }
@@ -136,7 +136,7 @@ void BmobUser::loginByAccount(string mebileNumber,string pwd,BmobLoginDelegate* 
 	_opType = HTTP_OP_Type::_bHTTP_LOGIN;
 
 	this->m_pLoginDelegate = delegate;
-   
+
 
 	this->send(network::HttpRequest::Type::GET);
 
@@ -162,7 +162,7 @@ void BmobUser::loginBySMSCode(string mebileNumber,string code,BmobLoginDelegate*
 	_opType = HTTP_OP_Type::_bHTTP_LOGIN;
 
 	this->m_pLoginDelegate = delegate;
-   
+
 
 	this->send(network::HttpRequest::Type::GET);
 
@@ -199,7 +199,7 @@ void BmobUser::update(string objectId,BmobUpdateDelegate* delegate){
         /* code */
         this->m_url += + "/" + objectId;
     }
-   
+
     this->send(network::HttpRequest::Type::PUT);
 }
 
@@ -258,7 +258,7 @@ void BmobUser::resetPasswordBySMSCode(string pw,string code,BmobResetPasswordByC
 	_opType = HTTP_OP_Type::_bHTTP_RESET_BY_CODE;
 	this->m_pResetByMSMCodeDelegate = delegate;
 	this->m_url = BmobSDKInit::RESET_BY_CODE_URL + "/" + code;
-	
+
 	this->clear();
 
 	CCUserDefault::sharedUserDefault()->setStringForKey("user_pwd",pw);
@@ -291,7 +291,7 @@ void BmobUser::updateCurrentUserPassword(string old_pwd,string new_pwd,BmobUpdat
 	this->clear();
 
 	this->m_url = BmobSDKInit::UPDATE_PWD_URL + "/" + m_objectId;
-	
+
 	CCUserDefault::sharedUserDefault()->setStringForKey("user_pwd",new_pwd);
 
 	this->enParamsToHttp("oldPassword",CCString::createWithFormat("%s",old_pwd.c_str()));

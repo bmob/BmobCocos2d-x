@@ -50,7 +50,7 @@ void BmobObject::setValue(string key,cocos2d::CCObject *object){
 }
 
 void BmobObject::setValue(string key,CCArray* array){
-    //'{"skills":{"__op":"AddUnique","objects":["flying","kungfu"]}}' 
+    //'{"skills":{"__op":"AddUnique","objects":["flying","kungfu"]}}'
     if (array == NULL || key.empty())
     {
         /* code */
@@ -87,7 +87,7 @@ void BmobObject::update(string objectId,BmobUpdateDelegate* delegate){
         /* code */
         this->m_url += + "/" + objectId;
     }
-    
+
     this->send(HttpRequest::Type::PUT);
 }
 
@@ -185,7 +185,7 @@ CCObject* BmobObject::getParams(string key){
 }
 
 void BmobObject::setHeader(vector<string> v){
-	this->m_header = v;	
+	this->m_header = v;
 }
 
 vector<string> BmobObject::getHeader(){
@@ -206,7 +206,7 @@ vector<string> BmobObject::getHeader(){
                 header_list.push_back(se);
             }
         }
-        
+
         this->m_header = header_list;
     }
 
@@ -216,7 +216,7 @@ vector<string> BmobObject::getHeader(){
 void BmobObject::enJson(Json::Value* value){
     BmobJsonUtil::dictionary2Json(value, &(this->m_mapData));
 }
- 
+
 void BmobObject::deJson(Json::Value* value){
     this->clear();
     BmobJsonUtil::json2Dictionary(value, &(this->m_mapData));
@@ -249,10 +249,13 @@ void BmobObject::send(HttpRequest::Type type){
 
     cout<<"request data is:"<<data<<endl;
 
+    HttpClient::getInstance()->setTimeoutForConnect(3000);
+		HttpClient::getInstance()->setTimeoutForRead(3000);
+    
     HttpClient::getInstance()->send(req);
     req->release();
 }
-    
+
 void BmobObject::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
     HttpResponse *response = (HttpResponse *)data;
 
@@ -274,7 +277,7 @@ void BmobObject::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
                     /* code */
                     this->m_pUpdateDelegate->onUpdateError(errorCode,errorInfo.c_str());
                 }
-                
+
             }break;
             case HTTP_OP_Type::_bHTTP_DELETE:{
                 if (m_pDeleteDelegate != NULL)
@@ -314,7 +317,7 @@ void BmobObject::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
             }break;
             default:break;
         }
-        
+
         return;
 
     }else{
@@ -394,8 +397,8 @@ void BmobObject::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
                     }break;
                     default:break;
                 }
-                
+
             }
         // }
-    }        
+    }
 }

@@ -42,6 +42,9 @@ void BmobCloud::send(network::HttpRequest::Type type){
 
   cout<<"request data is:"<<data<<endl;
 
+  HttpClient::getInstance()->setTimeoutForConnect(3000);
+	HttpClient::getInstance()->setTimeoutForRead(3000);
+
   HttpClient::getInstance()->send(req);
   req->release();
 }

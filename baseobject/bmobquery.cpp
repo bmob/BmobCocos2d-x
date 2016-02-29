@@ -25,7 +25,7 @@ void BmobQuery::findObjects(BmobFindDelegate* delegate){
 
 	this->m_pFindDelegate = delegate;
 	this->_delegateType = DelegateType::_bFIND_D;
-   
+
     this->m_url = getBaseUrl() +"?" \
         + getLimit() + getSkip() + getOrder() + getQueryKey();
 
@@ -41,10 +41,10 @@ void BmobQuery::findObjects(string tableName,BmobFindDelegate* delegate){
 
     this->m_pFindDelegate = delegate;
     this->_delegateType = DelegateType::_bFIND_D;
-  
+
     this->m_url = getBaseUrl() +"?" \
         + getLimit() + getSkip() + getOrder() + getQueryKey();
-        
+
     this->query();
 }
 
@@ -130,7 +130,7 @@ void BmobQuery::addWhereNotEqualTo(string seg,CCObject *object){
 }
 
 void BmobQuery::addWhereGreatorThan(string seg,CCObject *object){
-    
+
 }
 
 void BmobQuery::addWhereLessThan(string seg,CCObject *object){
@@ -346,7 +346,7 @@ vector<string> BmobQuery::getHeader(){
         header_list.push_back("X-Bmob-REST-API-Key:"+BmobSDKInit::APP_KEY);
         header_list.push_back("Accept-Encoding:gzip,deflate,sdch");
         header_list.push_back("Content-Type: application/json");
-        
+
         // if (m_sTableName == TABLE_USER) {
         //     header_list.push_back("X-Bmob-Session-Token:"+s_SettionToken);
         // }
@@ -367,11 +367,11 @@ void BmobQuery::deJson(Json::Value *value){
 
 void BmobQuery::query(){
 	HttpRequest* req = new HttpRequest;
-    
+
     req->setResponseCallback(this, cocos2d::SEL_CallFuncND(&BmobQuery::onHttpRequestCompleted));
     req->setRequestType(HttpRequest::Type::GET);
 
-    
+
     req->setHeaders(getHeader());
 
     Json::Value params;
@@ -380,7 +380,7 @@ void BmobQuery::query(){
     data = params.toStyledString();
     string st = "null\n";
     /**
-    * 
+    *
     */
     if (!data.empty() && strcmp(data.c_str(),st.c_str()) != 0)
     {
@@ -397,6 +397,9 @@ void BmobQuery::query(){
     }
     req->setUrl(this->m_url.c_str());
 
+    HttpClient::getInstance()->setTimeoutForConnect(3000);
+		HttpClient::getInstance()->setTimeoutForRead(3000);
+    
     HttpClient::getInstance()->send(req);
     req->release();
 }
@@ -444,7 +447,7 @@ void BmobQuery::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
             }break;
             default:break;
         }
-        
+
         return;
     }else{
 
@@ -486,7 +489,7 @@ void BmobQuery::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
                 }break;
                 default:break;
             }
-           
+
         }
     }
 }
