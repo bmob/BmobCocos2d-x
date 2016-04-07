@@ -169,7 +169,18 @@ void BmobUser::loginBySMSCode(string mebileNumber,string code,BmobLoginDelegate*
 }
 
 void BmobUser::signOrLoginByMobilePhone(string mebileNumber,string code,BmobLoginDelegate* delegate){
-	this->loginBySMSCode(mebileNumber,code,delegate);
+	if (meblieNumber.empty() || code.empty()) {
+	    return ;
+	}
+	
+    	this->m_url = BmobSDKInit::LOGIN_URL
+
+    	this->enParamsToHttp("mobilePhoneNumber",CCString::createWithFormat("%s",mebileNumber.c_str()));
+    	this->enParamsToHttp("smsCode",CCString::createWithFormat("%s",code.c_str()));
+
+    	this->m_pLoginDelegate = delegate;
+
+    	this->send(network::HttpRequest::Type::POST);
 }
 
 void BmobUser::update(string objectId,BmobUpdateDelegate* delegate){
