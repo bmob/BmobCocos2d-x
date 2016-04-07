@@ -169,7 +169,7 @@ void BmobUser::loginBySMSCode(string mebileNumber,string code,BmobLoginDelegate*
 }
 
 void BmobUser::signOrLoginByMobilePhone(string mebileNumber,string code,BmobLoginDelegate* delegate){
-	if (meblieNumber.empty() || code.empty()) {
+	if (mebileNumber.empty() || code.empty()) {
 	    return ;
 	}
 	
