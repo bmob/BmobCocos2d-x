@@ -55,7 +55,13 @@ void BmobCloud::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
 
   if (!response->isSucceed()) {
       int errorCode = response->getResponseCode();
-      string errorInfo = response->getErrorBuffer();
+      
+      std::vector<char> *buffer = response->getResponseData();
+      std::string errorInfo((*buffer).begin(),(*buffer).end());
+      if (errorInfo.size() <= 0) {
+          errorInfo = response->getErrorBuffer();
+      }
+      
       if (this->m_delegate != NULL) {
         /* code */
         this->m_delegate->onCloudFailure(errorCode,errorInfo.c_str());
@@ -73,7 +79,9 @@ void BmobCloud::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
     if (!reader.parse(str, value)) {
         //parse error
     }else{
-      this->m_delegate->onCloudSuccess(str.c_str());
+    	if(this->m_delegate != NULL){
+      		this->m_delegate->onCloudSuccess(str.c_str());
+    	}
     }
   }
 }
