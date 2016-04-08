@@ -415,7 +415,12 @@ void BmobQuery::onHttpRequestCompleted(cocos2d::CCNode *pSender,void *data){
 
     if (!response->isSucceed()) {
         int errorCode = response->getResponseCode();
-        string errorInfo = response->getErrorBuffer();
+        std::vector<char> *buffer = response->getResponseData();
+        std::string errorInfo((*buffer).begin(),(*buffer).end());
+        if (errorInfo.size() <= 0) {
+            errorInfo = response->getErrorBuffer();
+        }
+        
          switch(_delegateType){
             case DelegateType::_bFIND_D:{
                 if (this->m_pFindDelegate != NULL)
