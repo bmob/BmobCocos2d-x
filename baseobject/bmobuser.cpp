@@ -174,6 +174,7 @@ void BmobUser::signOrLoginByMobilePhone(string mebileNumber,string code,BmobLogi
 	}
 	
     	this->m_url = BmobSDKInit::USER_URL;
+    	_opType = HTTP_OP_Type::_bHTTP_LOGIN;
 
     	this->enParamsToHttp("mobilePhoneNumber",CCString::createWithFormat("%s",mebileNumber.c_str()));
     	this->enParamsToHttp("smsCode",CCString::createWithFormat("%s",code.c_str()));
