@@ -1,5 +1,0 @@
-<map id="BmobUser::requestSMSCode" name="BmobUser::requestSMSCode">
-<area shape="rect" id="node2" href="$classBmobObject.html#a32f1d50e4313bde8bcc0de39ad080327" title="BmobObject::clear" alt="" coords="284,5,415,32"/>
-<area shape="rect" id="node3" href="$classBmobObject.html#a4edc85f4b867b3001b819554b3d71005" title="BmobObject::enParamsToHttp" alt="" coords="249,56,450,83"/>
-<area shape="rect" id="node4" href="$classBmobObject.html#af8b56fb338303f46d659e76643f0b538" title="BmobObject::send" alt="" coords="284,107,415,133"/>
-</map>

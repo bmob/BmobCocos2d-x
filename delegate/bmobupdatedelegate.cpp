@@ -1,1 +1,0 @@
-#include "bmobupdatedelegate.h"

@@ -1,7 +1,0 @@
-<map id="BmobQuery::getHeader" name="BmobQuery::getHeader">
-<area shape="rect" id="node2" href="$classBmobQuery.html#a742d5001177ed8ee3fc31b21a9a9a422" title="BmobQuery::query" alt="" coords="213,81,344,108"/>
-<area shape="rect" id="node3" href="$classBmobQuery.html#ab0fdf6d343ed5a90f64d8264f3b58786" title="BmobQuery::findObjects" alt="" coords="397,5,563,32"/>
-<area shape="rect" id="node4" href="$classBmobQuery.html#a69fbf5896ad7f8a208a45a08c5600444" title="BmobQuery::getObject" alt="" coords="403,56,557,83"/>
-<area shape="rect" id="node5" href="$classBmobQuery.html#ac5ee0ac87aa4b4abd5dd467689c65ea9" title="BmobQuery::count" alt="" coords="415,107,545,133"/>
-<area shape="rect" id="node6" href="$classBmobQuery.html#ae525160a61cdd8bfc31cc8d388a48dad" title="BmobQuery::findStatistics" alt="" coords="393,157,567,184"/>
-</map>
