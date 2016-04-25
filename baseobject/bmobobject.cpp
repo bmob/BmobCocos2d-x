@@ -35,9 +35,11 @@ namespace bmobsdk{
               BmobHttpUtil::BASE_V8_URL.empty()){
             if (delegate != NULL) {
                 delegate->onSaveError(-1,"Error:SDK未初始化或初始化失败");
+            }else{
+                BmobLog::bmob_log("BmobObject","save","SDK didn't Initialized",BmobLog::LogType::E);
             }
 
-      		  return ;
+      		return ;
       	}
 
       	this->m_pSaveDelegate = delegate;
@@ -77,9 +79,11 @@ namespace bmobsdk{
     void BmobObject::update(string objectId,BmobUpdateDelegate* delegate){
       if (!BmobSDKInit::getInstance()->isInitialize() ||
             BmobHttpUtil::BASE_V8_URL.empty()){
-          if (delegate != NULL) {
+            if (delegate != NULL) {
               delegate->onUpdateError(-1,"Error:SDK未初始化或初始化失败");
-          }
+            }else{
+                BmobLog::bmob_log("BmobObject","Update","SDK didn't Initialized",BmobLog::LogType::E);
+            }
 
           return ;
       }
@@ -444,8 +448,6 @@ namespace bmobsdk{
                                   string session = value["data"]["sessionToken"].asString();
                                   CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
                                   CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
-
-                                  BmobLog::bmob_log("BmobObject::onHttpRequestCompleted","session",session);
                               }
                               this->m_objectId = value["data"]["objectId"].asString();
                               BmobLog::bmob_log("BmobObject::onHttpRequestCompleted","objectID",this->m_objectId);

@@ -31,6 +31,8 @@ namespace bmobsdk{
 		if (app_key.empty()) {
 			if (delegate != NULL) {
 				delegate->onInitFail(-1,"Error:AppKey为空");
+			}else{
+				BmobLog::bmob_log("BmobSDKInit","initialize","app_key is NULL",BmobLog::LogType::E);
 			}
 		}
 
@@ -143,8 +145,6 @@ namespace bmobsdk{
 		string rData;// = Crypt::CryptUtil::cryptSecretRequestData(data);
 		if (httpType == BmobHttpUtil::InitHttpType::HttpSecret) {
 			rData = Crypt::CryptUtil::cryptSecretRequestData(data);
-			BmobLog::bmob_log("BmobSDKInit::send","crypt",rData);
-			BmobLog::bmob_log("BmobSDKInit::send","decrypt",Crypt::CryptUtil::decryptSecretRequestData(rData));
 		}else{
 			rData = Crypt::CryptUtil::cryptData(data);
 		}
@@ -276,7 +276,7 @@ namespace bmobsdk{
 				default:break;
 			}
 
-				BmobLog::bmob_log("BmobSDKInit::onHttpRequestCompleted","errorIno",decrypt);
+			BmobLog::bmob_log("BmobSDKInit::onHttpRequestCompleted","errorIno",decrypt,BmobLog::LogType::E);
 	    }else{
 			std::vector<char> *buffer = response->getResponseData();
 			std::string str((*buffer).begin(),(*buffer).end());
@@ -302,7 +302,6 @@ namespace bmobsdk{
 					decrypt = Crypt::CryptUtil::decryptData(str);
 				}break;
 			}
-			BmobLog::bmob_log("BmobSDKInit::onHttpRequestCompleted","decrypt",decrypt);
 
 			Json::Reader reader;
 			Json::Value value;
@@ -345,7 +344,6 @@ namespace bmobsdk{
 									this->m_pDelegate->onInitSuccess(decrypt.c_str());
 							}
 
-							//this->getSecretKey(this->m_pDelegate);
 						}break;
 
 						case BmobHttpUtil::InitHttpType::HttpTimeStamp:{

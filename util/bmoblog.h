@@ -12,6 +12,13 @@ using namespace std;
 namespace bmobutil{
     class BmobLog{
     public:
+        enum LogType{
+            E,
+            D,
+            I,
+            W
+        };
+    public:
         /**
         * 获取当前时间,格式是:year-month-day hour:munite:seconed
         */
@@ -20,7 +27,7 @@ namespace bmobutil{
         /**
         * 打印出信息
         */
-        static void bmob_log(string cls,string tag,string msg);
+        static void bmob_log(string cls,string tag,string msg,BmobLog::LogType type = BmobLog::LogType::I);
 
         static void bmob_log_file(string filename,string cls,string tag,string msg);
 

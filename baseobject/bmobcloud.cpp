@@ -156,6 +156,8 @@ namespace bmobsdk{
             BmobHttpUtil::BASE_V8_URL.empty()){
             if (delegate != NULL) {
                 delegate->onCloudError(-1,"Error:SDK没初始化或初始化失败");
+            }else{
+                BmobLog::bmob_log("BmobCloud","execCloudCode","SDK didn't Initialized",BmobLog::LogType::E);
             }
             return ;
         }

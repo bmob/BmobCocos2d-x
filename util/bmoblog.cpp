@@ -16,8 +16,22 @@ namespace bmobutil{
         return string(tim);
     }
 
-    void BmobLog::bmob_log(string cls,string tag,string msg){
-        cout<<"["<<cls<<"[ "<<tag<<" ]] "<<getCurrentTime()<<":\t"<<msg<<"\n"<<endl;
+    void BmobLog::bmob_log(string cls,string tag,string msg,BmobLog::LogType type/* = BmobLog::LogType::I*/){
+        switch(type){
+            case BmobLog::LogType::E:{
+                cout<<"[Error]   ["<<cls<<"[ "<<tag<<" ]] "<<getCurrentTime()<<":\t"<<msg<<"\n"<<endl;
+            }break;
+            case BmobLog::LogType::D:{
+                cout<<"[Debug]   ["<<cls<<"[ "<<tag<<" ]] "<<getCurrentTime()<<":\t"<<msg<<"\n"<<endl;
+            }break;
+            case BmobLog::LogType::I:{
+                cout<<"[Info]   ["<<cls<<"[ "<<tag<<" ]] "<<getCurrentTime()<<":\t"<<msg<<"\n"<<endl;
+            }break;
+            case BmobLog::LogType::W:{
+                cout<<"[Warn]   ["<<cls<<"[ "<<tag<<" ]] "<<getCurrentTime()<<":\t"<<msg<<"\n"<<endl;
+            }break;
+        }
+       
     }
 
     void BmobLog::bmob_log_file(string filename,string cls,string tag,string msg){
