@@ -64,7 +64,7 @@ namespace bmobsdk{
             data = "{}";
         }
 
-        BmobLog::bmob_log("BmobCloud::send",tag,data);
+        BmobLog::bmob_log("BmobCloud::send",tag,dataJson.toStyledString());
 
         string tdata = Crypt::CryptUtil::cryptData(data);
         req->setRequestData(tdata.c_str(), strlen(tdata.c_str()));
@@ -156,9 +156,8 @@ namespace bmobsdk{
             BmobHttpUtil::BASE_V8_URL.empty()){
             if (delegate != NULL) {
                 delegate->onCloudError(-1,"Error:SDK没初始化或初始化失败");
-            }else{
-                BmobLog::bmob_log("BmobCloud","execCloudCode","SDK didn't Initialized",BmobLog::LogType::E);
             }
+            BmobLog::bmob_log("BmobCloud","execCloudCode","SDK没初始化或初始化失败",BmobLog::LogType::E);
             return ;
         }
 

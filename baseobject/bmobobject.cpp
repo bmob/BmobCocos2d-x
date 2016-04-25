@@ -300,7 +300,7 @@ namespace bmobsdk{
         std::string data;
         data = solidJson.toStyledString();
 
-        BmobLog::bmob_log("BmobObject::send",tag,data);
+        BmobLog::bmob_log("BmobObject",tag,dataJson.toStyledString());
 
         string tdata = Crypt::CryptUtil::cryptData(data);
         req->setRequestData(tdata.c_str(), strlen(tdata.c_str()));
@@ -329,7 +329,7 @@ namespace bmobsdk{
       	string mothed = BmobHttpUtil::responseMethod(header);
       	// string param = BmobSDKUtil::responseHeaderToJson(header);
 
-        BmobLog::bmob_log("BmobObject::onHttpRequestCompleted",tag,mothed);
+        BmobLog::bmob_log("BmobObject",tag,mothed);
 
         if (!response->isSucceed() || response->getResponseCode() == -1) {
             int errorCode = response->getResponseCode();
@@ -395,7 +395,7 @@ namespace bmobsdk{
             std::string temp((*buffer).begin(),(*buffer).end());
             string data = Crypt::CryptUtil::decryptData(temp);
 
-            BmobLog::bmob_log("BmobObject::onHttpRequestCompleted",tag,data);
+            BmobLog::bmob_log("BmobObject",tag,data);
             // if (m_sTag == kTagHttpEndpoint) {
             //     isSuccess = true;
             //     bmobResult = new CCString(str);
@@ -450,7 +450,6 @@ namespace bmobsdk{
                                   CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
                               }
                               this->m_objectId = value["data"]["objectId"].asString();
-                              BmobLog::bmob_log("BmobObject::onHttpRequestCompleted","objectID",this->m_objectId);
                               if (this->m_pSaveDelegate != NULL){
                                   this->m_pSaveDelegate->onSaveSucess(data.c_str());
                               }

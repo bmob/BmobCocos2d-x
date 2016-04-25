@@ -444,7 +444,7 @@ namespace bmobsdk{
         BmobJsonUtil::json2json(&reqData,"data",data);
 
         string strdata = reqData.toStyledString();
-        BmobLog::bmob_log("BmobQuery::query",tag,strdata);
+        BmobLog::bmob_log("BmobQuery::query",tag,where.toStyledString());
         string tdata = Crypt::CryptUtil::cryptData(strdata);
         req->setRequestData(tdata.c_str(), strlen(tdata.c_str()));
 
@@ -471,7 +471,6 @@ namespace bmobsdk{
         vector<char>* v = response->getResponseHeader();
         string header(v->begin(),v->end());
       	string mothed = BmobHttpUtil::responseMethod(header);
-        BmobLog::bmob_log("BmobQuery::onHttpRequestCompleted","mothed",mothed);
 
         if (!response->isSucceed()) {
             int errorCode = response->getResponseCode();
@@ -484,7 +483,7 @@ namespace bmobsdk{
               errorInfo = temp;
             }
 
-            BmobLog::bmob_log("BmobQuery::onHttpRequestCompleted","errorinfo",errorInfo);
+            BmobLog::bmob_log("BmobQuery","errorinfo",errorInfo);
            switch(httpType){
               case BmobHttpUtil::QueryHttpType::HttpFind:{
                   if (this->m_pFindDelegate != NULL){

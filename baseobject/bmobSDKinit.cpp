@@ -31,9 +31,9 @@ namespace bmobsdk{
 		if (app_key.empty()) {
 			if (delegate != NULL) {
 				delegate->onInitFail(-1,"Error:AppKey为空");
-			}else{
-				BmobLog::bmob_log("BmobSDKInit","initialize","app_key is NULL",BmobLog::LogType::E);
 			}
+
+			BmobLog::bmob_log("BmobSDKInit","initialize","app_key is NULL",BmobLog::LogType::E);
 		}
 
 		BmobSDKInit::REST_KEY = reset_key;
@@ -140,7 +140,7 @@ namespace bmobsdk{
 
 		std::string data;
 		data = solidJson.toStyledString();
-		BmobLog::bmob_log("BmobSDKInit::send",tag,data);
+		BmobLog::bmob_log("BmobSDKInit::send",tag,params.toStyledString());
 
 		string rData;// = Crypt::CryptUtil::cryptSecretRequestData(data);
 		if (httpType == BmobHttpUtil::InitHttpType::HttpSecret) {
@@ -177,7 +177,7 @@ namespace bmobsdk{
 		string tag(request->getTag());
 		BmobHttpUtil::InitHttpType httpType = BmobHttpUtil::getInitHttpType(tag);
 
-		BmobLog::bmob_log("BmobSDKInit::onHttpRequestCompleted","mothed",mothed);
+		BmobLog::bmob_log("BmobSDKInit::" + tag,"mothed",mothed);
 
 		string key2;
 		if (httpType == BmobHttpUtil::InitHttpType::HttpSecret) {
@@ -215,6 +215,7 @@ namespace bmobsdk{
 				if (errorInfo.empty()) {
 					errorInfo = "Error:网络连接或超时错误";
 				}
+				BmobLog::bmob_log("BmobSDKInit",tag,"网络连接或超时错误",BmobLog::LogType::E);
 			}
 
 			switch (httpType) {
@@ -276,7 +277,7 @@ namespace bmobsdk{
 				default:break;
 			}
 
-			BmobLog::bmob_log("BmobSDKInit::onHttpRequestCompleted","errorIno",decrypt,BmobLog::LogType::E);
+			BmobLog::bmob_log("BmobSDKInit",tag,decrypt,BmobLog::LogType::E);
 	    }else{
 			std::vector<char> *buffer = response->getResponseData();
 			std::string str((*buffer).begin(),(*buffer).end());
@@ -370,9 +371,11 @@ namespace bmobsdk{
 	void BmobSDKInit::getSecretKey(BmobInitDelegate* delegate){
 		if (this->isInitialize()) {
 			if (delegate != NULL) {
+				BmobLog::bmob_log("BmobSDKInit","getSecretKey","SDK已初始化",BmobLog::LogType::E);
 				delegate->onInitFail(-1,"Error:SDK已初始化");
 				return ;
 			}
+			
 		}
 
 		BmobSDKInit::initialize_times = 0;
@@ -384,6 +387,7 @@ namespace bmobsdk{
 
 	void BmobSDKInit::getTimeStamp(BmobGetTimeDelegate* delegate){
 		if (!this->isInitialize()) {
+			BmobLog::bmob_log("BmobSDKInit","getTimeStamp","SDK没有初始化",BmobLog::LogType::E);
 			if (delegate != NULL) {
 				delegate->onGetTime(-1,"Error:SDK没有初始化");
 				return ;
@@ -398,6 +402,7 @@ namespace bmobsdk{
 
 	void BmobSDKInit::uploadDeviceInfo(map<string,CCObject*> info,BmobUpDeviceInfoDelegate* delegate){
 		if (!this->isInitialize()) {
+			BmobLog::bmob_log("BmobSDKInit","uploadDeviceInfo","SDK没有初始化",BmobLog::LogType::E);
 			if (delegate != NULL) {
 				delegate->onUpload(-1,"Error:SDK没有初始化");
 				return ;
