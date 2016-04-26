@@ -162,7 +162,7 @@ namespace bmobsdk{
 		* @return
 		*/
 		void clear(){
-		this->m_mapData.clear();
+			this->m_mapData.clear();
 		}
 
 	protected:

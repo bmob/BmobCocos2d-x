@@ -124,12 +124,12 @@ namespace bmobsdk{
 
     void BmobQuery::BSQLFindObjects(string bql,CCObject* values,BmobBQLDelegate* delegate){
       if (!BmobSDKInit::getInstance()->isInitialize() ||
-          BmobHttpUtil::BASE_V8_URL.empty()){
-          if (delegate != NULL) {
-              delegate->onBQLFailure(-1,"Error:SDK未初始化或初始化失败");
-          }
+            BmobHttpUtil::BASE_V8_URL.empty()){
+            if (delegate != NULL) {
+                delegate->onBQLFailure(-1,"Error:SDK未初始化或初始化失败");
+            }
 
-          return ;
+            return ;
       }
 
       this->m_pBQLDelegate = delegate;
@@ -290,7 +290,7 @@ namespace bmobsdk{
 
     void BmobQuery::setLimit(int limit){
         if (limit <= 0) {
-          return ;
+            return ;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("limit",CCInteger::create(limit)));
@@ -298,7 +298,7 @@ namespace bmobsdk{
 
     void BmobQuery::setSkip(int skip){
         if (skip <= 0) {
-          return ;
+            return ;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("skip",CCInteger::create(skip)));
@@ -306,7 +306,7 @@ namespace bmobsdk{
 
     void BmobQuery::order(string key){
         if (key.empty()) {
-          return;
+            return;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("order",CCString::createWithFormat("%s",key.c_str())));
@@ -331,7 +331,7 @@ namespace bmobsdk{
 
     void BmobQuery::addQueryKeys(string column){
         if (column.empty()) {
-          return ;
+            return ;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("keys",CCString::createWithFormat("%s",column.c_str())));
@@ -340,15 +340,15 @@ namespace bmobsdk{
 
     void BmobQuery::sum(string column){
         if (column.empty()) {
-          return ;
-        }
+            return ;
+        }  
 
         this->m_mapData.insert(pair<string,CCObject*>("sum",CCString::createWithFormat("%s",column.c_str())));
     }
 
     void BmobQuery::average(string column){
         if (column.empty()) {
-          return ;
+            return ;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("average",CCString::createWithFormat("%s",column.c_str())));
@@ -356,7 +356,7 @@ namespace bmobsdk{
 
     void BmobQuery::max(string column){
         if (column.empty()) {
-          return ;
+            return ;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("max",CCString::createWithFormat("%s",column.c_str())));
@@ -364,7 +364,7 @@ namespace bmobsdk{
 
     void BmobQuery::min(string column){
         if (column.empty()) {
-          return ;
+            return ;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("min",CCString::createWithFormat("%s",column.c_str())));
@@ -372,7 +372,7 @@ namespace bmobsdk{
 
     void BmobQuery::groupby(string column){
         if (column.empty()) {
-          return ;
+            return ;
         }
 
         this->m_mapData.insert(pair<string,CCObject*>("groupby",CCString::createWithFormat("%s",column.c_str())));
@@ -497,42 +497,42 @@ namespace bmobsdk{
 
             string errorInfo;
             if (errorCode != -1 && !str.empty()) {
-              errorInfo = Crypt::CryptUtil::decryptData(str);
+                errorInfo = Crypt::CryptUtil::decryptData(str);
             }else{
-              errorInfo = temp;
+                errorInfo = temp;
             }
 
             BmobLog::bmob_log("BmobQuery","errorinfo",errorInfo);
-           switch(httpType){
-              case BmobHttpUtil::QueryHttpType::HttpFind:{
-                  if (this->m_pFindDelegate != NULL){
-                      this->m_pFindDelegate->onFindError(errorCode,errorInfo.c_str());
-                  }
-              }break;
-              case BmobHttpUtil::QueryHttpType::HttpGet:{
-                  if (this->m_pGetDelegate != NULL){
-                      this->m_pGetDelegate->onGetError(errorCode,errorInfo.c_str());
-                  }
-              }break;
-              case BmobHttpUtil::QueryHttpType::HttpCount:{
-                  if (this->m_pCountDelegate != NULL){
-                      this->m_pCountDelegate->onCountError(errorCode,errorInfo.c_str());
-                  }
-              }break;
-              case BmobHttpUtil::QueryHttpType::HttpStatistics:{
-                  if (this->m_pStaticsDelegate != NULL){
-                      this->m_pStaticsDelegate->onStaticsError(errorCode,errorInfo.c_str());
-                  }
-              }break;
-              case BmobHttpUtil::QueryHttpType::HttpBQL:{
-                  if (this->m_pBQLDelegate != NULL) {
-                      this->m_pBQLDelegate->onBQLFailure(errorCode,errorInfo.c_str());
-                  }
-              }break;
-              default:break;
+            switch(httpType){
+                case BmobHttpUtil::QueryHttpType::HttpFind:{
+                    if (this->m_pFindDelegate != NULL){
+                        this->m_pFindDelegate->onFindError(errorCode,errorInfo.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpGet:{
+                    if (this->m_pGetDelegate != NULL){
+                        this->m_pGetDelegate->onGetError(errorCode,errorInfo.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpCount:{
+                    if (this->m_pCountDelegate != NULL){
+                        this->m_pCountDelegate->onCountError(errorCode,errorInfo.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpStatistics:{
+                    if (this->m_pStaticsDelegate != NULL){
+                        this->m_pStaticsDelegate->onStaticsError(errorCode,errorInfo.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpBQL:{
+                    if (this->m_pBQLDelegate != NULL) {
+                        this->m_pBQLDelegate->onBQLFailure(errorCode,errorInfo.c_str());
+                    }
+                }break;
+                default:break;
             }
 
-          return;
+            return;
         }else{
 
             std::vector<char> *buffer = response->getResponseData();
@@ -540,33 +540,33 @@ namespace bmobsdk{
             string str = Crypt::CryptUtil::decryptData(temp);
 
             switch(httpType){
-                 case BmobHttpUtil::QueryHttpType::HttpFind:{
-                     if (this->m_pFindDelegate != NULL){
-                         this->m_pFindDelegate->onFindSucess(str.c_str());
-                     }
-                 }break;
-                 case BmobHttpUtil::QueryHttpType::HttpGet:{
-                     if (this->m_pGetDelegate != NULL){
-                         this->m_pGetDelegate->onGetSucess(str.c_str());
-                     }
-                 }break;
-                 case BmobHttpUtil::QueryHttpType::HttpCount:{
-                     if(this->m_pCountDelegate != NULL){
-                         this->m_pCountDelegate->onCountSucess(str.c_str());
-                     }
-                 }break;
-                 case BmobHttpUtil::QueryHttpType::HttpStatistics:{
-                     if (this->m_pStaticsDelegate != NULL){
-                         this->m_pStaticsDelegate->onStaticsSucess(str.c_str());
-                     }
-                 }break;
-                 case BmobHttpUtil::QueryHttpType::HttpBQL:{
-                     if (this->m_pBQLDelegate != NULL) {
-                         this->m_pBQLDelegate->onBQLSuccess(str.c_str());
-                     }
-                 }break;
-                 default:break;
-             }
+                case BmobHttpUtil::QueryHttpType::HttpFind:{
+                    if (this->m_pFindDelegate != NULL){
+                        this->m_pFindDelegate->onFindSucess(str.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpGet:{
+                    if (this->m_pGetDelegate != NULL){
+                        this->m_pGetDelegate->onGetSucess(str.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpCount:{
+                    if(this->m_pCountDelegate != NULL){
+                        this->m_pCountDelegate->onCountSucess(str.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpStatistics:{
+                    if (this->m_pStaticsDelegate != NULL){
+                        this->m_pStaticsDelegate->onStaticsSucess(str.c_str());
+                    }
+                }break;
+                case BmobHttpUtil::QueryHttpType::HttpBQL:{
+                    if (this->m_pBQLDelegate != NULL) {
+                        this->m_pBQLDelegate->onBQLSuccess(str.c_str());
+                    }
+                }break;
+                default:break;
+            }
         }
     }
 }

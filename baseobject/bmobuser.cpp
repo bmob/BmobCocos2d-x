@@ -10,6 +10,7 @@ namespace bmobsdk{
 
 	string BmobUser::__USER_FILE = "cur_user.xml";
 	BmobUser* BmobUser::currentUser = NULL;
+	
 	BmobUser* BmobUser::getCurrentUser(){
 		if (currentUser != NULL){
 			return currentUser;

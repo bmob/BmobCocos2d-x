@@ -9,7 +9,6 @@ using namespace Crypt;
 
 namespace bmobsdk{
 	string BmobSDKInit::APP_KEY;
-	string BmobSDKInit::REST_KEY;
 	string BmobSDKInit::USER_TABLE = "_User";
 
 
@@ -36,7 +35,6 @@ namespace bmobsdk{
 			BmobLog::bmob_log("BmobSDKInit","initialize","app_key is NULL",BmobLog::LogType::E);
 		}
 
-		// BmobSDKInit::REST_KEY = reset_key;
 		BmobSDKInit::APP_KEY = app_key;
 		this->getSecretKey(delegate);
 	}
@@ -59,9 +57,9 @@ namespace bmobsdk{
 		/* = BmobHttpUtil::InitHttpType::HttpSecret */){
 		vector<string> temp;
 		if (httpType == BmobHttpUtil::InitHttpType::HttpSecret) {
-				temp = Crypt::CryptUtil::getSecretHeader();
+			temp = Crypt::CryptUtil::getSecretHeader();
 		}else{
-				temp = Crypt::CryptUtil::getCryptRequestHeader(BmobSDKInit::APP_KEY);
+			temp = Crypt::CryptUtil::getCryptRequestHeader(BmobSDKInit::APP_KEY);
 		}
 
 		return temp;
@@ -358,8 +356,6 @@ namespace bmobsdk{
 						}
 						
 					}break;
-
-					default:cout<<"to here"<<endl; break;
 				}
 				
 			}

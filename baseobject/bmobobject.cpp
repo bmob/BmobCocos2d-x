@@ -160,7 +160,7 @@ namespace bmobsdk{
         }
 
         if (!BmobSDKInit::getInstance()->isInitialize() ||
-              BmobHttpUtil::BASE_V8_URL.empty()){
+            BmobHttpUtil::BASE_V8_URL.empty()){
             if (delegate != NULL) {
                 delegate->onDeleteError(-1,"Error:SDK未初始化或初始化失败");
             }
@@ -444,32 +444,32 @@ namespace bmobsdk{
                         return;
                     }else{
                         switch (httpType) {
-                          case BmobHttpUtil::ObjectHttpType::HttpSave:{
-                              if (strcmp(this->m_tableName.c_str(),BmobSDKInit::USER_TABLE.c_str()) == 0){
-                                  string objectId = value["data"]["objectId"].asString();
-                                  string session = value["data"]["sessionToken"].asString();
-                                  CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
-                                  CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
-                              }
-                              this->m_objectId = value["data"]["objectId"].asString();
-                              if (this->m_pSaveDelegate != NULL){
-                                  this->m_pSaveDelegate->onSaveSucess(data.c_str());
-                              }
+                            case BmobHttpUtil::ObjectHttpType::HttpSave:{
+                                if (strcmp(this->m_tableName.c_str(),BmobSDKInit::USER_TABLE.c_str()) == 0){
+                                    string objectId = value["data"]["objectId"].asString();
+                                    string session = value["data"]["sessionToken"].asString();
+                                    CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
+                                    CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
+                                }
+                                this->m_objectId = value["data"]["objectId"].asString();
+                                if (this->m_pSaveDelegate != NULL){
+                                    this->m_pSaveDelegate->onSaveSucess(data.c_str());
+                                }
 
-                          }break;
-                          case BmobHttpUtil::ObjectHttpType::HttpLogin:{
-                              /**
-                              * 登陆获取sessionToken
-                              */
-                              string objectId = value["data"]["objectId"].asString();
-                              string session = value["data"]["sessionToken"].asString();
-                              CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
-                              CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
+                            }break;
+                            case BmobHttpUtil::ObjectHttpType::HttpLogin:{
+                                /**
+                                * 登陆获取sessionToken
+                                */
+                                string objectId = value["data"]["objectId"].asString();
+                                string session = value["data"]["sessionToken"].asString();
+                                CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
+                                CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
 
-                              if(this->m_pLoginDelegate != NULL){
-                                  this->m_pLoginDelegate->onLoginDone(200,data.c_str());
-                              }
-                          }break;
+                                if(this->m_pLoginDelegate != NULL){
+                                    this->m_pLoginDelegate->onLoginDone(200,data.c_str());
+                                }
+                            }break;
                         }
                     }
                 }break;

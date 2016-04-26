@@ -116,7 +116,6 @@ namespace bmobsdk{
 
 	public:
 		static string USER_TABLE;
-		static string REST_KEY;			//SDK APP_ID//
 		static string APP_KEY;			//SDK APP_KEY //
 
 

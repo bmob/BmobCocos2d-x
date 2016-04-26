@@ -26,16 +26,16 @@ namespace bmobsdk{
     }
 
     map<string,CCObject*> BmobCloud::getSolidRequestData(){
-      map<string,CCObject*> temp;
-      map<string,string> data = Crypt::CryptUtil::getCryptRequestData();
+        map<string,CCObject*> temp;
+        map<string,string> data = Crypt::CryptUtil::getCryptRequestData();
 
-      temp = BmobSDKUtil::mapStringToCCObject(data);
-      temp.insert(pair<string, CCObject *>("client",\
+        temp = BmobSDKUtil::mapStringToCCObject(data);
+        temp.insert(pair<string, CCObject *>("client",\
           BmobSDKUtil::mapStringToCCDirectionary(Crypt::CryptUtil::getClientPlatomData())));
-      temp.insert(pair<string,CCObject *>("timestamp",CCInteger::create(Crypt::CryptUtil::getTimeStamp())));
+        temp.insert(pair<string,CCObject *>("timestamp",CCInteger::create(Crypt::CryptUtil::getTimeStamp())));
 
 
-      return temp;
+        return temp;
     }
 
     void BmobCloud::send(string tag){

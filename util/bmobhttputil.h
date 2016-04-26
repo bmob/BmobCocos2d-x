@@ -22,11 +22,11 @@ namespace bmobutil{
         *  HttpError
         */
         enum class  InitHttpType{
-          HttpSecret,
-          HttpInit,
-          HttpTimeStamp,
-          HttpUpDevice,
-          HttpError
+            HttpSecret,
+            HttpInit,
+            HttpTimeStamp,
+            HttpUpDevice,
+            HttpError
         };
 
         /**
@@ -42,16 +42,16 @@ namespace bmobutil{
         ＊　HttpSignUp　       请求注册
         */
         enum class ObjectHttpType{
-          HttpSave,
-          HttpUpdate,
-          HttpDelete,
-          HttpReset,
-          HttpRequestCode,
-          HttpResetByCode,
-          HttpEmailVerify,
-          HttpLogin,
-          HttpSignUp,
-          HttpError
+            HttpSave,
+            HttpUpdate,
+            HttpDelete,
+            HttpReset,
+            HttpRequestCode,
+            HttpResetByCode,
+            HttpEmailVerify,
+            HttpLogin,
+            HttpSignUp,
+            HttpError
         };
 
         /**
@@ -98,10 +98,10 @@ namespace bmobutil{
         * HttpDelete,                                 //伤处云端代码
         */
         enum class CloudHttpType{
-        HttpExec,
-        HttpCreate,
-        HttpDelete,
-        HttpError
+            HttpExec,
+            HttpCreate,
+            HttpDelete,
+            HttpError
         };
 
     public:
