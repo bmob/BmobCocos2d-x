@@ -56,6 +56,7 @@ namespace bmobsdk{
 
 		/**
 		* 上传设备信息
+		* @param info 设备信息
 		* @param delegate
 		* @return
 		*/

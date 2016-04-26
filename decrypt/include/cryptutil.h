@@ -135,7 +135,7 @@ namespace Crypt{
         */
         static void outputVector(vector<string> data);
 
-        private:
+    private:
         /**
         * 获取加密的头部
         * @param agent string

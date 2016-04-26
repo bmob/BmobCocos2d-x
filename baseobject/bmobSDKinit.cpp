@@ -111,8 +111,6 @@ namespace bmobsdk{
 	  	req->setRequestType(type);
 		req->setTag(tag.c_str());
 
-		this->m_mapData.clear();
-
 		BmobHttpUtil::InitHttpType httpType = BmobHttpUtil::getInitHttpType(tag);
 		req->setHeaders(getHeader(httpType));
 		map<string,CCObject*> soildData;
@@ -134,15 +132,16 @@ namespace bmobsdk{
 		Json::Value params;
 		this->enJson(&params);
 
+		BmobLog::bmob_log("BmobSDKInit::send",tag,params.toStyledString());
+		
 		Json::Value solidJson;
 		this->enJson(&solidJson,soildData);
 		BmobJsonUtil::json2json(&solidJson,"data",params);
 
 		std::string data;
 		data = solidJson.toStyledString();
-		BmobLog::bmob_log("BmobSDKInit::send",tag,params.toStyledString());
 
-		string rData;// = Crypt::CryptUtil::cryptSecretRequestData(data);
+		string rData;
 		if (httpType == BmobHttpUtil::InitHttpType::HttpSecret) {
 			rData = Crypt::CryptUtil::cryptSecretRequestData(data);
 		}else{
@@ -303,6 +302,7 @@ namespace bmobsdk{
 					decrypt = Crypt::CryptUtil::decryptData(str);
 				}break;
 			}
+			
 
 			Json::Reader reader;
 			Json::Value value;
@@ -314,56 +314,54 @@ namespace bmobsdk{
 						return ;
 					}
 				}
-
 			}else{
 				int code = value["result"]["code"].asInt();
 
-				if (code == 200) {
-					switch (httpType) {
+				switch (httpType) {
 
-						case BmobHttpUtil::InitHttpType::HttpSecret:{
-							string ke = value["data"]["secretKey"].asString();
-							Crypt::CryptUtil::setS(ke);
-							this->onInit();
-						}break;
+					case BmobHttpUtil::InitHttpType::HttpSecret:{
+						string ke = value["data"]["secretKey"].asString();
+						Crypt::CryptUtil::setS(ke);
+						
+						this->onInit();
+					}break;
 
-						case BmobHttpUtil::InitHttpType::HttpInit:{
-							initialize_success = 1;
+					case BmobHttpUtil::InitHttpType::HttpInit:{
+						initialize_success = 1;
 
-							string api = value["data"]["api"].asString();
-							string file = value["data"]["file"].asString();
-							int timestamp = value["data"]["timestamp"].asInt();
-							if (!api.empty()) {
-									BmobHttpUtil::BASE_V8_URL = api;
-							}
+						string api = value["data"]["api"].asString();
+						string file = value["data"]["file"].asString();
+						int timestamp = value["data"]["timestamp"].asInt();
+						if (!api.empty()) {
+								BmobHttpUtil::BASE_V8_URL = api;
+						}
 
-							if (!file.empty()) {
-									BmobHttpUtil::BASE_FILE_URL = file;
-							}
+						if (!file.empty()) {
+								BmobHttpUtil::BASE_FILE_URL = file;
+						}
 
-							if (this->m_pDelegate != NULL) {
-									this->m_pDelegate->onInitSuccess(decrypt.c_str());
-							}
+						if (this->m_pDelegate != NULL) {
+								this->m_pDelegate->onInitSuccess(decrypt.c_str());
+						}
 
-						}break;
+					}break;
 
-						case BmobHttpUtil::InitHttpType::HttpTimeStamp:{
-							if (this->m_pGetDelegate != NULL) {
-								this->m_pGetDelegate->onGetTime(200,decrypt.c_str());
-							}
-						}break;
+					case BmobHttpUtil::InitHttpType::HttpTimeStamp:{
+						if (this->m_pGetDelegate != NULL) {
+							this->m_pGetDelegate->onGetTime(200,decrypt.c_str());
+						}
+					}break;
 
-						case BmobHttpUtil::InitHttpType::HttpUpDevice:{
-							if (this->m_pUpdateDelegate != NULL) {
-								this->m_pUpdateDelegate->onUpload(200,decrypt.c_str());
-							}
-						}break;
+					case BmobHttpUtil::InitHttpType::HttpUpDevice:{
+						if (this->m_pUpdateDelegate != NULL) {
+							this->m_pUpdateDelegate->onUpload(200,decrypt.c_str());
+						}
+						
+					}break;
 
-						default:break;
-					}
-
-				}else{
+					default:cout<<"to here"<<endl; break;
 				}
+				
 			}
 		}
 	}
@@ -408,6 +406,7 @@ namespace bmobsdk{
 				return ;
 			}
 		}
+
 
 		this->m_pUpdateDelegate = delegate;
 		this->m_url = BmobHttpUtil::BASE_UPDEVICE_URL;

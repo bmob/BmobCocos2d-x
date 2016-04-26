@@ -35,8 +35,6 @@ namespace bmobsdk{
 			m_pStaticsDelegate = NULL;
 		}
 
-
-
 		/**
 		* 查询所有对象
 		* @param delegate 查询回调接口
@@ -50,6 +48,12 @@ namespace bmobsdk{
 		* @return
 		*/
 		virtual void findObjects(string tableName,BmobFindDelegate* delegate) = 0;
+		/**
+		* 查询表的结构
+		* @param tableName 表名
+		* @param delegate 查询回调接口
+		*/
+		virtual void findTableStruct(string tableName,BmobFindDelegate* delegate) = 0;
 		/**
 		* 通过objectId 查询对应的数据
 		* @param objectid 查询的objectId

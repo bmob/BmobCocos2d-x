@@ -151,6 +151,7 @@ namespace bmobutil{
     public:
         static string BASE_V8_URL;                    //  api interface
         static string BASE_FILE_URL;                  //  file url
+        static string BASE_SCHEMAS_URL;               //  schemas url
         static string BASE_INIT_URL;                  //  init
         static string BASE_SECRET_URL;                //  secret
         static string BASE_CREATE_URL;                //  create

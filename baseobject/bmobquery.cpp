@@ -51,6 +51,23 @@ namespace bmobsdk{
         this->query(BmobHttpUtil::HTTP_FIND_TAG);
     }
 
+    void BmobQuery::findTableStruct(string tableName,BmobFindDelegate* delegate){
+        if (!BmobSDKInit::getInstance()->isInitialize()
+            || BmobHttpUtil::BASE_V8_URL.empty()){
+            if (delegate != NULL) {
+                delegate->onFindError(-1,"Error:SDK未初始化或初始化失败");
+            }
+
+            return ;
+        }
+
+        this->m_tableName = tableName;
+        this->m_pFindDelegate = delegate;
+        this->m_url = BmobHttpUtil::BASE_SCHEMAS_URL;
+
+        this->query(BmobHttpUtil::HTTP_FIND_TAG);
+    }
+
     void BmobQuery::getObject(string objectId,BmobGetDelegate* delegate){
         if (!BmobSDKInit::getInstance()->isInitialize() ||
             BmobHttpUtil::BASE_V8_URL.empty()){

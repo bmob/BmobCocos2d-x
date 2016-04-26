@@ -25,6 +25,7 @@ namespace bmobsdk{
 
 		virtual void findObjects(BmobFindDelegate* delegate) override final;
 		virtual void findObjects(string tableName,BmobFindDelegate* delegate) override final;
+		virtual void findTableStruct(string tableName,BmobFindDelegate* delegate) override final;
 		virtual void getObject(string objectId,BmobGetDelegate* delegate) override final;
 		virtual void count(BmobCountDelegate* delegate,bool sign = false) override final;
 		virtual void findStatistics(BmobStaticsDelegate* delegate) override final;
