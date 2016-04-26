@@ -27,7 +27,7 @@ namespace bmobsdk{
 		return bmobSDKInit;
 	}
 
-	void BmobSDKInit::initialize(string app_key,string reset_key,BmobInitDelegate* delegate){
+	void BmobSDKInit::initialize(string app_key,BmobInitDelegate* delegate){
 		if (app_key.empty()) {
 			if (delegate != NULL) {
 				delegate->onInitFail(-1,"Error:AppKey为空");
@@ -36,7 +36,7 @@ namespace bmobsdk{
 			BmobLog::bmob_log("BmobSDKInit","initialize","app_key is NULL",BmobLog::LogType::E);
 		}
 
-		BmobSDKInit::REST_KEY = reset_key;
+		// BmobSDKInit::REST_KEY = reset_key;
 		BmobSDKInit::APP_KEY = app_key;
 		this->getSecretKey(delegate);
 	}
@@ -217,10 +217,10 @@ namespace bmobsdk{
 				}
 				BmobLog::bmob_log("BmobSDKInit",tag,"网络连接或超时错误",BmobLog::LogType::E);
 			}
-
+			BmobLog::bmob_log("BmobSDKInit",tag,str + "   " + errorInfo,BmobLog::LogType::E);
 			switch (httpType) {
 				case BmobHttpUtil::InitHttpType::HttpSecret:{
-					if (errorCode != -1) {
+					if (errorCode != -1 && !str.empty()) {
 						const char* p = key2.c_str();
 						int len = key2.size() - 16;
 						char lk[17] = {0};
@@ -242,7 +242,7 @@ namespace bmobsdk{
 					}break;
 
 				case BmobHttpUtil::InitHttpType::HttpInit:{
-					if (errorCode != -1) {
+					if (errorCode != -1 && !str.empty()) {
 						decrypt = Crypt::CryptUtil::decryptData(str);
 					}else{
 						decrypt = errorInfo;
@@ -255,7 +255,7 @@ namespace bmobsdk{
 				}break;
 
 				case BmobHttpUtil::InitHttpType::HttpTimeStamp:{
-					if (errorCode != -1) {
+					if (errorCode != -1 && !str.empty()) {
 						decrypt = Crypt::CryptUtil::decryptData(str);
 					}else{
 						decrypt = errorInfo;
@@ -265,7 +265,7 @@ namespace bmobsdk{
 					}
 				}break;
 				case BmobHttpUtil::InitHttpType::HttpUpDevice:{
-					if (errorCode != -1) {
+					if (errorCode != -1 && !str.empty()) {
 						decrypt = Crypt::CryptUtil::decryptData(str);
 					}else{
 						decrypt = errorInfo;

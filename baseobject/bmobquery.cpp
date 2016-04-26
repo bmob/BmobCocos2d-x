@@ -475,10 +475,12 @@ namespace bmobsdk{
         if (!response->isSucceed()) {
             int errorCode = response->getResponseCode();
             string temp = response->getErrorBuffer();
+            std::vector<char> *buffer = response->getResponseData();
+            std::string str((*buffer).begin(),(*buffer).end());
 
             string errorInfo;
-            if (errorCode != -1) {
-              errorInfo = Crypt::CryptUtil::decryptData(temp);
+            if (errorCode != -1 && !str.empty()) {
+              errorInfo = Crypt::CryptUtil::decryptData(str);
             }else{
               errorInfo = temp;
             }

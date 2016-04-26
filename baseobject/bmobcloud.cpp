@@ -92,10 +92,12 @@ namespace bmobsdk{
         if (!response->isSucceed()) {
             int errorCode = response->getResponseCode();
             string errorInfo = response->getErrorBuffer();
+            std::vector<char> *buffer = response->getResponseData();
+            std::string str((*buffer).begin(),(*buffer).end());
             string temp;
 
-            if (errorCode != -1) {
-              temp = Crypt::CryptUtil::decryptData(errorInfo);
+            if (errorCode != -1 && !str.empty()) {
+              temp = Crypt::CryptUtil::decryptData(str);
             }else{
               temp = errorInfo;
             }

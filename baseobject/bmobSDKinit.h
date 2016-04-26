@@ -31,7 +31,7 @@ namespace bmobsdk{
 		* @param app_key string
 		* @return
 		*/
-		void initialize(string app_id,string app_key,BmobInitDelegate* delegate);
+		void initialize(string app_id,BmobInitDelegate* delegate);
 		/**
 		* 查询环境是否已经初始化
 		* @param

@@ -1,7 +1,7 @@
 #include "bmobhttputil.h"
 
 namespace bmobutil{
-    string BmobHttpUtil::BASE_V8_URL              = "http://p.bmob.cn/8/";
+    string BmobHttpUtil::BASE_V8_URL              = "http://open.bmob.cn/8/";
     string BmobHttpUtil::BASE_FILE_URL            = "";
     string BmobHttpUtil::BASE_INIT_URL            = BASE_V8_URL + "init";//"127.0.0.1:8080/request";
     string BmobHttpUtil::BASE_SECRET_URL          = BASE_V8_URL + "secret";

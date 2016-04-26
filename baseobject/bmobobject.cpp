@@ -334,12 +334,14 @@ namespace bmobsdk{
         if (!response->isSucceed() || response->getResponseCode() == -1) {
             int errorCode = response->getResponseCode();
             string errorInfo = response->getErrorBuffer();
+            std::vector<char> *buffer = response->getResponseData();
+            std::string str((*buffer).begin(),(*buffer).end());
 
             /**
             * 是否是连接超时
             */
-            if (errorCode != -1) {
-                errorInfo = Crypt::CryptUtil::decryptData(errorInfo);
+            if (errorCode != -1 && !str.empty()) {
+                errorInfo = Crypt::CryptUtil::decryptData(str);
             }
 
             switch(httpType){
