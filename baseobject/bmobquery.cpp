@@ -191,7 +191,7 @@ namespace bmobsdk{
     }
 
     void BmobQuery::addWhereGreaterThan(string seg,CCObject *object){
-         CCInteger* value = dynamic_cast<CCInteger*>(object);
+        CCInteger* value = dynamic_cast<CCInteger*>(object);
         if (!value){
             return ;
         }

@@ -9,12 +9,14 @@ USING_NS_CC;
 namespace bmobsdk{
 
 	string BmobUser::__USER_FILE = "cur_user.xml";
-	BmobUser* BmobUser::currentUser = NULL;
+
+	BmobUser* BmobUser::createUser(){
+		BmobUser* bu = new BmobUser();
+
+		return bu;
+	}
 	
 	BmobUser* BmobUser::getCurrentUser(){
-		if (currentUser != NULL){
-			return currentUser;
-		}
 
 		string id = CCUserDefault::sharedUserDefault()->getStringForKey("user_id");
 		string pwd = CCUserDefault::sharedUserDefault()->getStringForKey("user_pwd");
@@ -25,7 +27,9 @@ namespace bmobsdk{
 			return NULL;
 		}
 
-		currentUser = new BmobUser();
+		BmobUser* currentUser = new BmobUser();
+		currentUser->autorelease();
+		
 		currentUser->m_objectId = id;
 		currentUser->m_username = name;
 		currentUser->m_session = session;
@@ -35,18 +39,10 @@ namespace bmobsdk{
 	}
 
 	void BmobUser::logOut(){
-		if (currentUser == NULL){
-			return ;
-		}
-
 		CCUserDefault::sharedUserDefault()->setStringForKey("user_id","");
 		CCUserDefault::sharedUserDefault()->setStringForKey("user_name","");
 		CCUserDefault::sharedUserDefault()->setStringForKey("user_pwd","");
 		CCUserDefault::sharedUserDefault()->setStringForKey("user_session","");
-
-		delete currentUser;
-
-		currentUser = NULL;
 	}
 
 	BmobUser::BmobUser():

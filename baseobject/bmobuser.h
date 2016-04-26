@@ -21,8 +21,7 @@ USING_NS_CC;
 namespace bmobsdk{
 	class BmobUser:public BmobObject{
 	public:
-
-		BmobUser();
+		
 		virtual ~BmobUser();
 
 		/**
@@ -116,13 +115,15 @@ namespace bmobsdk{
 		* 获取当前用户
 		*/
 		static BmobUser* getCurrentUser();
-		static BmobUser* currentUser;
+		static BmobUser* createUser();
 		static string __USER_FILE;
 
 		/**
 		* 退出登录
 		*/
 		static void logOut();
+	private:
+		BmobUser();
 
 	private:
 		CC_SYNTHESIZE(bool,m_mobilePhoneNumberVerified,MobilePhoneNumberVerified);
