@@ -124,29 +124,57 @@ namespace bmobsdk{
             return;
 
         }else{
-
             std::vector<char> *buffer = response->getResponseData();
             std::string data((*buffer).begin(),(*buffer).end());
-            string str = Crypt::CryptUtil::decryptData(data);
+
+            string str;
+            int code = 301;
+            string msg = "";
+            try{
+                str = Crypt::CryptUtil::decryptData(data);
+            }catch(exception e){
+                str = "返回数据出错";
+            }   
+            Json::Reader reader;
+            Json::Value value;
+            if (!reader.parse(str, value)) {
+                msg = str;
+            }else{
+                code = value["result"]["code"].asInt();
+                msg = value["result"]["message"].asString();
+            }
 
             switch(httpType){
                 case BmobHttpUtil::CloudHttpType::HttpExec:{
                     if (this->m_delegate != NULL) {
-                        this->m_delegate->onExecCloud(200,str.c_str());
+                        if(code == 200){
+                            this->m_delegate->onExecCloud(code,str.c_str());
+                        }else {
+                            this->m_delegate->onExecCloud(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::CloudHttpType::HttpCreate:{
                     if (this->m_delegate != NULL) {
-                        this->m_delegate->onCreateCloud(200,str.c_str());
+                        if(code == 200){
+                            this->m_delegate->onCreateCloud(200,str.c_str());
+                        }else {
+                            this->m_delegate->onCreateCloud(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::CloudHttpType::HttpDelete:{
                     if (this->m_delegate != NULL) {
-                        this->m_delegate->onDeleteCloud(200,str.c_str());
+                        if(code == 200){
+                            this->m_delegate->onDeleteCloud(200,str.c_str());
+                        }else {
+                            this->m_delegate->onDeleteCloud(code,msg.c_str());
+                        }
                     }
                 }break;
-                default:break;
+                default:break;           
             }
+            
         }
     }
 

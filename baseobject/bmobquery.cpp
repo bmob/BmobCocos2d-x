@@ -537,32 +537,68 @@ namespace bmobsdk{
 
             std::vector<char> *buffer = response->getResponseData();
             std::string temp((*buffer).begin(),(*buffer).end());
-            string str = Crypt::CryptUtil::decryptData(temp);
+
+            string str;
+            int code = 301;
+            string msg = "";
+            try{
+                str = Crypt::CryptUtil::decryptData(temp);
+            }catch(exception e){
+                str = "返回数据出错";
+            }   
+            Json::Reader reader;
+            Json::Value value;
+            if (!reader.parse(str, value)) {
+                msg = str;
+            }else{
+                code = value["result"]["code"].asInt();
+                msg = value["result"]["message"].asString();
+            }
 
             switch(httpType){
                 case BmobHttpUtil::QueryHttpType::HttpFind:{
                     if (this->m_pFindDelegate != NULL){
-                        this->m_pFindDelegate->onFindSucess(str.c_str());
+                        if(code == 200){
+                            this->m_pFindDelegate->onFindSucess(str.c_str());
+                        }else {
+                            this->m_pFindDelegate->onFindError(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::QueryHttpType::HttpGet:{
                     if (this->m_pGetDelegate != NULL){
-                        this->m_pGetDelegate->onGetSucess(str.c_str());
+                        if(code == 200){
+                            this->m_pGetDelegate->onGetSucess(str.c_str());
+                        }else {
+                            this->m_pGetDelegate->onGetError(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::QueryHttpType::HttpCount:{
                     if(this->m_pCountDelegate != NULL){
-                        this->m_pCountDelegate->onCountSucess(str.c_str());
+                        if(code == 200){
+                            this->m_pCountDelegate->onCountSucess(str.c_str());
+                        }else{
+                            this->m_pCountDelegate->onCountError(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::QueryHttpType::HttpStatistics:{
                     if (this->m_pStaticsDelegate != NULL){
-                        this->m_pStaticsDelegate->onStaticsSucess(str.c_str());
+                        if(code == 200){
+                            this->m_pStaticsDelegate->onStaticsSucess(str.c_str());
+                        }else {
+                            this->m_pStaticsDelegate->onStaticsError(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::QueryHttpType::HttpBQL:{
                     if (this->m_pBQLDelegate != NULL) {
-                        this->m_pBQLDelegate->onBQLSuccess(str.c_str());
+                        if(code == 200){
+                            this->m_pBQLDelegate->onBQLSuccess(str.c_str());
+                        }else {
+                            this->m_pBQLDelegate->onBQLFailure(code,msg.c_str());
+                        }
                     }
                 }break;
                 default:break;

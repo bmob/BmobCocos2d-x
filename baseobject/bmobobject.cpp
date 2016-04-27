@@ -394,85 +394,121 @@ namespace bmobsdk{
         }else{
 
             std::vector<char> *buffer = response->getResponseData();
-            std::string temp((*buffer).begin(),(*buffer).end());
-            string data = Crypt::CryptUtil::decryptData(temp);
+            std::string data((*buffer).begin(),(*buffer).end());
 
-            BmobLog::bmob_log("BmobObject",tag,data);
             // if (m_sTag == kTagHttpEndpoint) {
             //     isSuccess = true;
             //     bmobResult = new CCString(str);
             // }else{
             //     str = unGzip(str);
+            string str;
+            int code = 301;
+            string msg = "";
+            try{
+                str = Crypt::CryptUtil::decryptData(data);
+                BmobLog::bmob_log("BmobObject",tag,str);
+            }catch(exception e){
+                str = "返回数据出错";
+            }   
+            Json::Reader reader;
+            Json::Value value;
+            if (!reader.parse(str, value)) {
+                msg = str;
+            }else{
+                code = value["result"]["code"].asInt();
+                msg = value["result"]["message"].asString();
+            }
 
             switch(httpType){
                 case BmobHttpUtil::ObjectHttpType::HttpUpdate:{
                     if (this->m_pUpdateDelegate != NULL){
-                        this->m_pUpdateDelegate->onUpdateSucess(data.c_str());
+                        if (code == 200){
+                            this->m_pUpdateDelegate->onUpdateSucess(str.c_str());
+                        }else{
+                            this->m_pUpdateDelegate->onUpdateError(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::ObjectHttpType::HttpDelete:{
                     if (this->m_pDeleteDelegate != NULL){
-                        this->m_pDeleteDelegate->onDeleteSucess(data.c_str());
+                        if(code == 200){
+                            this->m_pDeleteDelegate->onDeleteSucess(str.c_str());
+                        }else {
+                            this->m_pDeleteDelegate->onDeleteError(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::ObjectHttpType::HttpReset:{
                     if (this->m_pResetDelegate != NULL){
-                        this->m_pResetDelegate->onResetSucess(data.c_str());
+                        if(code == 200){
+                            this->m_pResetDelegate->onResetSucess(str.c_str());
+                        }else {
+                            this->m_pResetDelegate->onResetError(code,msg.c_str());
+                        }
                     }
                 }break;
                  case BmobHttpUtil::ObjectHttpType::HttpRequestCode:{
                     if(this->m_pRequestSMSCodeDelegate != NULL){
-                        this->m_pRequestSMSCodeDelegate->onRequestDone(200,data.c_str());
+                        if(code == 200){
+                            this->m_pRequestSMSCodeDelegate->onRequestDone(200,str.c_str());
+                        }else {
+                            this->m_pRequestSMSCodeDelegate->onRequestDone(code,msg.c_str());
+                        }
                     }
                 }break;
                  case BmobHttpUtil::ObjectHttpType::HttpResetByCode:{
                     if(this->m_pResetByMSMCodeDelegate != NULL){
-                        this->m_pResetByMSMCodeDelegate->onResetDone(200,data.c_str());
+                        if(code == 200){
+                            this->m_pResetByMSMCodeDelegate->onResetDone(200,str.c_str());
+                        }else{
+                            this->m_pResetByMSMCodeDelegate->onResetDone(code,msg.c_str());
+                        }
                     }
                 }break;
                 case BmobHttpUtil::ObjectHttpType::HttpEmailVerify:{
                     if (this->m_pEmailVerifyDelegate != NULL){
-                        this->m_pEmailVerifyDelegate->onEmailVerifySucess(data.c_str());
-                    }
-                }break;
-
-                default:{
-                    Json::Reader reader;
-                    Json::Value value;
-                    if (!reader.parse(data, value)) {
-                        //parse error
-                        return;
-                    }else{
-                        switch (httpType) {
-                            case BmobHttpUtil::ObjectHttpType::HttpSave:{
-                                if (strcmp(this->m_tableName.c_str(),BmobSDKInit::USER_TABLE.c_str()) == 0){
-                                    string objectId = value["data"]["objectId"].asString();
-                                    string session = value["data"]["sessionToken"].asString();
-                                    CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
-                                    CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
-                                }
-                                this->m_objectId = value["data"]["objectId"].asString();
-                                if (this->m_pSaveDelegate != NULL){
-                                    this->m_pSaveDelegate->onSaveSucess(data.c_str());
-                                }
-
-                            }break;
-                            case BmobHttpUtil::ObjectHttpType::HttpLogin:{
-                                /**
-                                * 登陆获取sessionToken
-                                */
-                                string objectId = value["data"]["objectId"].asString();
-                                string session = value["data"]["sessionToken"].asString();
-                                CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
-                                CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
-
-                                if(this->m_pLoginDelegate != NULL){
-                                    this->m_pLoginDelegate->onLoginDone(200,data.c_str());
-                                }
-                            }break;
+                        if (code == 200){
+                            this->m_pEmailVerifyDelegate->onEmailVerifySucess(str.c_str());
+                        }else {
+                            this->m_pEmailVerifyDelegate->onEmailVerifyError(code,msg.c_str());
                         }
                     }
                 }break;
+                case BmobHttpUtil::ObjectHttpType::HttpSave:{
+                    if (strcmp(this->m_tableName.c_str(),BmobSDKInit::USER_TABLE.c_str()) == 0){
+                        string objectId = value["data"]["objectId"].asString();
+                        string session = value["data"]["sessionToken"].asString();
+                        CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
+                        CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
+                    }
+                    this->m_objectId = value["data"]["objectId"].asString();
+                    if (this->m_pSaveDelegate != NULL){
+                        if(code == 200){
+                            this->m_pSaveDelegate->onSaveSucess(str.c_str());
+                        }else {
+                            this->m_pSaveDelegate->onSaveError(code,msg.c_str());
+                        }
+                    }
+
+                }break;
+                case BmobHttpUtil::ObjectHttpType::HttpLogin:{
+                    /**
+                    * 登陆获取sessionToken
+                    */
+                    string objectId = value["data"]["objectId"].asString();
+                    string session = value["data"]["sessionToken"].asString();
+                    CCUserDefault::sharedUserDefault()->setStringForKey("user_id",objectId);
+                    CCUserDefault::sharedUserDefault()->setStringForKey("user_session",session);
+
+                    if(this->m_pLoginDelegate != NULL){
+                        if(code == 200){
+                            this->m_pLoginDelegate->onLoginDone(200,str.c_str());
+                        }else {
+                            this->m_pLoginDelegate->onLoginDone(code,msg.c_str());
+                        }
+                    }
+                }break;
+                default:break;
             }
         }
     }
