@@ -9,13 +9,16 @@
 
 using namespace std;
 
-class BmobStrUtil{
-public:
-	/**
-	* 移除字符串中的tab、enter、space资产
-	* @param str 要操作的字符串
-	*/
-	static string remove_tab_enter_space(string* str);
-};
+namespace bmobutil{
+	class BmobStrUtil{
+	public:
+		/**
+		* 移除字符串中的tab、enter、space资产
+		* @param str 要操作的字符串
+		* @return string
+		*/
+		static string remove_tab_enter_space(string* str);
+	};
+}
 
 #endif

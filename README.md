@@ -1,5 +1,4 @@
-# BmobCocos2d-x
-Cocos2d-x Source Code
+# release create
 
-#add bmobcolud
-添加bmobsdk云端代码的执行
+#document
+https://shockerjue.gitbooks.io/document-cocos2dx-sdk/content/

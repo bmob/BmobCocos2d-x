@@ -1,8 +1,8 @@
 /**
-* initialize 
+* initialize
 */
-BmobSDKInit::initialize("87e5973cd2572cc463be2e88dea43982","f17b65b28fb9d1b4bd986ea899ad331e");
-if (BmobSDKInit::isInitialize())
+BmobSDKInit::getInstance()->initialize("87e5973cd2572cc463be2e88dea43982","f17b65b28fb9d1b4bd986ea899ad331e");
+if (BmobSDKInit::getInstance()->isInitialize())
 {
     /* code */
     CCLOG("BmobSDKInit initialize is sucess");

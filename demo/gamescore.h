@@ -4,9 +4,10 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "../baseobject/bmobobject.h"
+#include "../bmobsdk.h"
 
 using namespace std;
+using namespace bmobsdk;
 USING_NS_CC_EXT;
 USING_NS_CC;
 
