@@ -342,11 +342,11 @@ namespace bmobsdk{
 					string file = value["data"]["file"].asString();
 					int timestamp = value["data"]["timestamp"].asInt();
 					if (!api.empty()) {
-							BmobHttpUtil::BASE_V8_URL = api;
+						BmobHttpUtil::BASE_V8_URL = api;
 					}
 
 					if (!file.empty()) {
-							BmobHttpUtil::BASE_FILE_URL = file;
+						BmobHttpUtil::BASE_FILE_URL = file;
 					}
 
 					if (this->m_pDelegate != NULL) {
